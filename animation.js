@@ -1,6 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const flower = document.getElementById('flower');
 
+    // Reset animation by removing classes first (just in case)
+    flower.classList.remove('growing', 'waving');
+
+    // Trigger reflow
+    void flower.offsetWidth;
+
     // Start with the growing animation
     flower.classList.add('growing');
 
