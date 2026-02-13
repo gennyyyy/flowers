@@ -1,0 +1,234 @@
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: #000000;
+    /* Pitch black background */
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: white;
+    border-radius: 50%;
+    z-index: -2;
+    /* Behind everything */
+    opacity: 0;
+    animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+}
+
+.flower-container {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.hill {
+    position: absolute;
+    bottom: -100px;
+    width: 800px;
+    height: 150px;
+    background-color: #1a472a;
+    /* Darker green for the hill */
+    border-radius: 50% 50% 0 0;
+    z-index: 0;
+    box-shadow: 0 0 15px #1a472a;
+    /* Subtle glow for the hill */
+}
+
+.flower {
+    position: relative;
+    transform-origin: bottom center;
+    z-index: 1;
+    /* Ensure flower is on top of hill */
+    bottom: 20px;
+    /* Plant it in the hill */
+}
+
+/* Flower Parts */
+.stem {
+    width: 10px;
+    height: 200px;
+    background-color: #228B22;
+    /* Forest green */
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+.flower-head {
+    position: absolute;
+    top: -60px;
+    /* Adjust based on petal size */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    z-index: 2;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background-color: #FFD700;
+    /* Gold */
+    border-radius: 50%;
+    z-index: 3;
+    box-shadow: 0 0 20px #FFD700, 0 0 40px #FFD700;
+    /* Strong gold glow */
+}
+
+.petal {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #FF69B4;
+    /* Hot pink */
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform-origin: center center;
+    z-index: 1;
+    box-shadow: 0 0 15px #FF69B4, 0 0 30px #FF69B4;
+    /* Pink glow */
+}
+
+/* Positioning Petals around the center */
+.petal:nth-child(1) {
+    transform: translate(-50%, -150%);
+}
+
+/* Top */
+.petal:nth-child(2) {
+    transform: translate(-10%, -120%) rotate(72deg);
+}
+
+.petal:nth-child(3) {
+    transform: translate(10%, -60%) rotate(144deg);
+}
+
+.petal:nth-child(4) {
+    transform: translate(-60%, -60%) rotate(216deg);
+}
+
+.petal:nth-child(5) {
+    transform: translate(-90%, -120%) rotate(288deg);
+}
+
+/* Better petal positioning for a 5-petal flower */
+/* Let's use specific coordinates for a cleaner look */
+.petal:nth-child(1) {
+    transform: translate(-50%, -50%) rotate(0deg) translateY(-35px);
+}
+
+.petal:nth-child(2) {
+    transform: translate(-50%, -50%) rotate(72deg) translateY(-35px);
+}
+
+.petal:nth-child(3) {
+    transform: translate(-50%, -50%) rotate(144deg) translateY(-35px);
+}
+
+.petal:nth-child(4) {
+    transform: translate(-50%, -50%) rotate(216deg) translateY(-35px);
+}
+
+.petal:nth-child(5) {
+    transform: translate(-50%, -50%) rotate(288deg) translateY(-35px);
+}
+
+
+.leaf {
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    background-color: #228B22;
+    border-radius: 0 50% 0 50%;
+    bottom: 80px;
+    box-shadow: 0 0 10px #228B22;
+    /* Subtle green glow */
+}
+
+.leaf-left {
+    left: 50%;
+    transform: translateX(-100%) rotate(-10deg);
+    transform-origin: right center;
+}
+
+.leaf-right {
+    left: 50%;
+    transform: rotate(190deg);
+    /* Mirrored interaction */
+    transform-origin: left center;
+    bottom: 120px;
+}
+
+
+/* Animations */
+
+/* Growing Animation */
+@keyframes grow {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.flower.growing {
+    animation: grow 2s ease-out forwards;
+}
+
+/* Waving Animation */
+@keyframes wave {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(5deg);
+    }
+
+    75% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.flower.waving {
+    animation: wave 3s ease-in-out infinite;
+}
