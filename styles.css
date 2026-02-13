@@ -73,8 +73,9 @@ body {
 .stem {
     width: 10px;
     height: 200px;
-    background-color: #228B22;
-    /* Forest green */
+    height: 200px;
+    background: linear-gradient(to bottom, #228B22 80%, #1a472a 100%);
+    /* Fade into hill color */
     margin: 0 auto;
     border-radius: 5px;
 }
@@ -190,45 +191,74 @@ body {
     bottom: 120px;
 }
 
-
-/* Animations */
-
-/* Growing Animation */
-@keyframes grow {
-    0% {
-        transform: scale(0);
-        opacity: 0;
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+transform-origin: left center;
+bottom: 120px;
 }
 
-.flower.growing {
-    animation: grow 2s ease-out forwards;
+.grass-base-left,
+.grass-base-right {
+    position: absolute;
+    width: 6px;
+    height: 15px;
+    background-color: #1a472a;
+    /* Match hill color or slightly lighter */
+    bottom: 0px;
+    /* At the bottom of the flower container (where stem starts) */
+    border-radius: 50% 50% 0 0;
+    z-index: 2;
 }
 
-/* Waving Animation */
-@keyframes wave {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    25% {
-        transform: rotate(5deg);
-    }
-
-    75% {
-        transform: rotate(-5deg);
-    }
-
-    100% {
-        transform: rotate(0deg);
-    }
+.grass-base-left {
+    left: 50%;
+    transform: translateX(-8px) rotate(-15deg);
+    box-shadow: 0 0 5px #1a472a;
 }
 
-.flower.waving {
-    animation: wave 3s ease-in-out infinite;
+.grass-base-right {
+    left: 50%;
+    transform: translateX(2px) rotate(15deg);
+    box-shadow: 0 0 5px #1a472a;
 }
+
+/* Modify stem to blend better */
+.stem {
+
+    /* Growing Animation */
+    @keyframes grow {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .flower.growing {
+        animation: grow 2s ease-out forwards;
+    }
+
+    /* Waving Animation */
+    @keyframes wave {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        25% {
+            transform: rotate(5deg);
+        }
+
+        75% {
+            transform: rotate(-5deg);
+        }
+
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+
+    .flower.waving {
+        animation: wave 3s ease-in-out infinite;
+    }
